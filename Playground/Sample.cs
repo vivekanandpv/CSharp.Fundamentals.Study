@@ -17,6 +17,20 @@ namespace Playground
             this.city = city;
         }
 
+        //  if method parameters (order or type, or both) differ, we can have method overloads
+        //  this is part of compile-time-polymorphism, as the decision about which overload to call
+        //  happens at the compile-time
+        //  Method overloading is allowed in interfaces and abstract classes as well
+
+        //  Please note that the return type is not part of the method overloading
+
+        //  overload (no parameter)
+        public void PrintMessage()
+        {
+            Console.WriteLine($"Score: {score}; Name: {name}; City: {city}");
+        }
+
+        //  overload (1 parameter)
         public void PrintMessage(Selection selection)
         {
             //  enum can be used for switch
@@ -32,11 +46,13 @@ namespace Playground
                     Console.WriteLine($"City: {city}");
                     break;
                 default:
-                    Console.WriteLine($"Score: {score}; Name: {name}; City: {city}");
+                    PrintMessage(); //  using the overload within
                     break;
             }
             
         }
+
+        
     }
 
     //  an enum is used to represent named constants
