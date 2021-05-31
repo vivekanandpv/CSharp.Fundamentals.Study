@@ -6,17 +6,17 @@ namespace Playground
     {
         static void Main(string[] args)
         {
-            //  A derived class can substitute itself wherever any of its base-classes (up the hierarchy) are required
-            //  This is polymorphism
+            //  Because the method is not overridable, it depends on on which object it is getting called
+            //  If Draw() is called on Shape, it will invoke Shape's implemenation
+            //  If it is called on Triangle, it will invoke Triangle's implemenation
+            //  Please remember, the left-hand type matters now, not the right-hand type
+            
+            Shape t = new Triangle();       //  type of t is Shape  
+            Triangle t2 = new Triangle();   //  type of t2 is Triangle
 
-            Shape s = new Shape();
-            Shape t = new Triangle();       //  Triangle is a Shape
-            Shape rt = new RightTriangle(); //  RightTriangle is a Triangle, which is a Shape
 
-
-            s.Draw();
-            t.Draw();   //  Triangle inherits from Shape
-            rt.Draw();  //  Right inherits from Triangle
+            t.Draw();   //  Shape's implementation
+            t2.Draw();  //  Triangl's implemenation
         }
     }
 }
