@@ -4,23 +4,25 @@ using System.Text;
 
 namespace Playground
 {
-    public class Shape
+    //  abstract classes cannot be directly instantiated
+    //  they are meant to be derived
+    //  like a normal class, it can contain fields, properties, constructors, methods, etc.
+    //  optionally, they may contain abstract members like interfaces
+    //  if there is at least one abstract member, the class must be marked abstract
+    //  but an abstract class need not contain abstract members
+    //  They are used to provide base implementation is complex hierarchies such as GUI frameworks
+    //  Some design patterns such as Template Method, make use of abstract classes
+    public abstract class Shape
     {
-        //  If the method is not marked as virutal in base-class
-        //  there is no runtime polymorphism
-        public void Draw()
-        {
-            Console.WriteLine("Shape drawing...");
-        }
+        //  an abstract member should not have a body
+        public abstract void Draw();
     }
 
     //  Triangle inherits from Shape
     public class Triangle : Shape
     {
-        //  A non-virtual method cannot be overridden
-        //  This hides the method, therefore a warning
-        //  Please see the Program.cs for more explanation
-        public void Draw()
+        //  this must now provide an override
+        public override void Draw()
         {
             Console.WriteLine("Triangle drawing...");
         }
@@ -28,7 +30,11 @@ namespace Playground
 
 
     public class RightTriangle : Triangle
-    {  
-        
+    {
+        //  Overriding here is optional, as it doesn't directly inherit from an abstract class
+        public override void Draw()
+        {
+            Console.WriteLine("Right-triangle drawing...");
+        }
     }
 }
