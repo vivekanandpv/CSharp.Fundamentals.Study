@@ -6,14 +6,20 @@ namespace Playground
     {
         static void Main(string[] args)
         {
-            //  https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types#characteristics-of-the-floating-point-types
+            //  this is instantiating a class object
+            var car = new Vehicle(14.25, "Krishnan");   //  car is an instance of Vehicle class
 
-            float f = 3.1415f;      // 32-bits, System.Float, can use f or F as suffix
-            double d = 3.1415;      // 64-bits, System.Double, doesn't require a suffix, can use d or D if so wish
-            decimal dm = 3.1415m;   // 128-bits, System.Decimal, can use m or M as suffix
+            //  var uses auto-type inference (a.k.a implicit typing)
+            //  More about var: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/var
 
-            //  Please read more about decimal type:
-            //  https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#the-decimal-type
+            //  invoking a method on the object
+            car.Start();
+            car.Stop();
+            var owner = car.GetOwnerName();
+
+            //  using string interpolation (C# 6)
+            //  https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated
+            Console.WriteLine($"Owner of the vehicle is: {owner}");
         }
     }
 }
