@@ -6,16 +6,14 @@ namespace Playground
     {
         static void Main(string[] args)
         {
-            //  https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/integral-numeric-types#characteristics-of-the-integral-types
+            //  https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types#characteristics-of-the-floating-point-types
 
-            byte b = 100;       //  unsigned, 8-bits, System.Byte
-            sbyte sb = 100;     //  signed, 8-bits, System.SByte
-            short sh = 125;     //  signed, 16-bits, System.Short
-            ushort ush = 135;   //  unsigned, 16-bits, System.UShort
-            int i = 100;        //  signed, 32-bits, System.Int32
-            uint ui = 100;      //  unsigned, 32-bits, System.UInt32
-            long l = 154;       //  signed, 64-bits, System.Int64
-            ulong ul = 147;     //  unsigned, 64-bits, System.UInt64
+            float f = 3.1415f;      // 32-bits, System.Float, can use f or F as suffix
+            double d = 3.1415;      // 64-bits, System.Double, doesn't require a suffix, can use d or D if so wish
+            decimal dm = 3.1415m;   // 128-bits, System.Decimal, can use m or M as suffix
+
+            //  Please read more about decimal type:
+            //  https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/language-specification/types#the-decimal-type
         }
     }
 }
