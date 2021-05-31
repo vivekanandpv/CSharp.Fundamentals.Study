@@ -6,20 +6,17 @@ namespace Playground
     {
         static void Main(string[] args)
         {
-            //  this is instantiating a class object
-            var car = new Vehicle(14.25, "Krishnan");   //  car is an instance of Vehicle class
+            //  Interface cannot be instantiated directly
+            //  There must be an implementer on the rvalue
+            IDrivable car = new Vehicle(14.25, "Krishnan");   //  car is an instance of IDrivable
 
-            //  var uses auto-type inference (a.k.a implicit typing)
-            //  More about var: https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/var
+            //  Vehicle-specific methods are not accessible now, even though we have Vehicle implementation
+            //  car.Start();
+            //  car.Stop();
+            //  var owner = car.GetOwnerName();
 
-            //  invoking a method on the object
-            car.Start();
-            car.Stop();
-            var owner = car.GetOwnerName();
-
-            //  using string interpolation (C# 6)
-            //  https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/tokens/interpolated
-            Console.WriteLine($"Owner of the vehicle is: {owner}");
+            car.Drive();    //  Vehicle's implementation will be invoked: polymorphism
+            car.Honk();     //  default implementation will be invoked
         }
     }
 }
