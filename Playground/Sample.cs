@@ -6,30 +6,20 @@ namespace Playground
 {
     public class Sample
     {
-        //  const and static members are accessed from the type, not from the object
-        public const int SCORE = 25;
+        private int score { get; }  //  this is a readonly property
+        private readonly string name = "Default Name";  //  initialization is allowed
+        private readonly string city;
 
-        public static string Name = "Sample";
-
-        //  Instance member
-        public DateTime Today { get; set; } = DateTime.Now;
-
-
-        //  static methods do not get access to instance members
-        public static void PrintMessage()
+        public Sample(int score, string name, string city)
         {
-            Console.WriteLine("Static message...");
+            this.score = score;  //  either initialization or constructor assignment
+            this.name = name;   //  this is allowed; this wins over the initialization; NB: this is an error in Java
+            this.city = city;
         }
 
-        //  Instance members get access to other instance members as well as static members
-        public int GetYear()
+        public void PrintMessage()
         {
-            return Today.Year;
-        }
-
-        public string GetNameFromInstance()
-        {
-            return Name;    //  static member access is allowed from instance method
+            Console.WriteLine($"Score: {score}; Name: {name}; City: {city}");
         }
     }
 }
