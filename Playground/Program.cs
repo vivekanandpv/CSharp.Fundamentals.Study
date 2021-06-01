@@ -6,20 +6,23 @@ namespace Playground
     {
         static void Main(string[] args)
         {
-            PrintNames("Vijay");
-            PrintNames("Vijay", "Krishnan", "Ahmed");
+            //  using named arguments, the position doesn't matter
+            PrintGreeting(lastName: "Patil", firstName: "Vinayak");
+
+            Console.WriteLine($"Square, without n: {Square()}");
+            Console.WriteLine($"Square, with n: {Square(n: 3.1415)}");
         }
 
-        //  params must be applied to a single-dimension array
-        //  only one params per method allowed
-        //  params must be the last in the list of parameters
-        //  you may have other parameters before params
-        static void PrintNames(params string[] names)
+        static void PrintGreeting(string firstName, string lastName)
         {
-            foreach (var name in names)
-            {
-                Console.WriteLine(name);
-            }
+            Console.WriteLine($"Greetings {firstName} {lastName}");
+        }
+
+        //  n is optional
+        //  or 0 is the default (in case caller doesn't pass)
+        static double Square(double n = 0)
+        {
+            return n * n;
         }
     }
 }
