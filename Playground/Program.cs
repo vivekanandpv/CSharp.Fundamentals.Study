@@ -6,12 +6,19 @@ namespace Playground
     {
         static void Main(string[] args)
         {
-            //  Nullable<double> d = 3.1415;    //  verbose way
-            //  Nullable can only work with structs
-            double? d = 3.1415; //  short form
-            DateTime? today = DateTime.Now;
+            string name = "Sunil";
+            string anotherName = name;
 
-            Console.WriteLine(today is DateTime?);  //  True only when it is not null; false when null
+            name = "Vikram";    //  this is not mutation, but rebinding (re-assignment)
+
+            //  this also means, the original string is never changed by using the string API
+            name.ToUpper(); //  name is intact
+
+            Console.WriteLine(name);
+
+            //  if we wish, we can rebind the result
+            name = name.ToUpper();  //  is exactly equal to name = "VIKRAM";
+            Console.WriteLine(name);
         }
     }
 }
