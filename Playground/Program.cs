@@ -6,17 +6,12 @@ namespace Playground
     {
         static void Main(string[] args)
         {
-            int i = 100;
+            //  Nullable<double> d = 3.1415;    //  verbose way
+            //  Nullable can only work with structs
+            double? d = 3.1415; //  short form
+            DateTime? today = DateTime.Now;
 
-            //  boxing: value type variable is boxed in an object
-            //  object is a reference type (class)
-            object obj = i;
-
-            //  unboxing: boxed object is converted to a value type
-            //int j = (int)obj;   //  explicit case is required
-
-            int k = Convert.ToInt32(obj);   //  defaults to 0 in this case if obj is null;
-                                            //  in other cases for example with strings, an exception is thrown
+            Console.WriteLine(today is DateTime?);  //  True only when it is not null; false when null
         }
     }
 }
