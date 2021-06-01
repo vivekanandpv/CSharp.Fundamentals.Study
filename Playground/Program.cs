@@ -6,19 +6,20 @@ namespace Playground
     {
         static void Main(string[] args)
         {
-            SampleStruct st;    //  this may be initialized or not
-            PrintName(out st);
-            //  access to members is allowed, since the method must assign to out parameter
-            Console.WriteLine($"Struct After call: {st.Name}");
+            PrintNames("Vijay");
+            PrintNames("Vijay", "Krishnan", "Ahmed");
         }
 
-        static void PrintName(out SampleStruct sample)
+        //  params must be applied to a single-dimension array
+        //  only one params per method allowed
+        //  params must be the last in the list of parameters
+        //  you may have other parameters before params
+        static void PrintNames(params string[] names)
         {
-            //  before assignment, member access is not allowed
-            //  sample.Name = "Something";  //  Not allowed
-
-            //  must assign to out parameter before leaving
-            sample = new SampleStruct("Assigned within the method");
+            foreach (var name in names)
+            {
+                Console.WriteLine(name);
+            }
         }
     }
 }
