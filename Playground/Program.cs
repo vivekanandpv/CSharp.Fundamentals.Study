@@ -15,6 +15,7 @@ namespace Playground
             var st = new SampleStruct("Struct Default Name");
             Console.WriteLine($"Struct Before call: {st.Name}");
             //  ref parameter must be passed as ref
+            //  ref parameters must be initialized
             PrintName(ref st);
             Console.WriteLine($"Struct After call: {st.Name}");
         }
