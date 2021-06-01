@@ -6,23 +6,17 @@ namespace Playground
     {
         static void Main(string[] args)
         {
-            //  using named arguments, the position doesn't matter
-            PrintGreeting(lastName: "Patil", firstName: "Vinayak");
+            int i = 100;
 
-            Console.WriteLine($"Square, without n: {Square()}");
-            Console.WriteLine($"Square, with n: {Square(n: 3.1415)}");
-        }
+            //  boxing: value type variable is boxed in an object
+            //  object is a reference type (class)
+            object obj = i;
 
-        static void PrintGreeting(string firstName, string lastName)
-        {
-            Console.WriteLine($"Greetings {firstName} {lastName}");
-        }
+            //  unboxing: boxed object is converted to a value type
+            //int j = (int)obj;   //  explicit case is required
 
-        //  n is optional
-        //  or 0 is the default (in case caller doesn't pass)
-        static double Square(double n = 0)
-        {
-            return n * n;
+            int k = Convert.ToInt32(obj);   //  defaults to 0 in this case if obj is null;
+                                            //  in other cases for example with strings, an exception is thrown
         }
     }
 }
