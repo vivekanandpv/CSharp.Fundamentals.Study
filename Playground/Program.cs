@@ -6,31 +6,19 @@ namespace Playground
     {
         static void Main(string[] args)
         {
-            var s = new SampleClass("Class Default Name");
-            Console.WriteLine($"Class Before call: {s.Name}");
-            PrintName(s);
-            Console.WriteLine($"Class After call: {s.Name}");
-
-
-            var st = new SampleStruct("Struct Default Name");
-            Console.WriteLine($"Struct Before call: {st.Name}");
-            //  ref parameter must be passed as ref
-            //  ref parameters must be initialized
-            PrintName(ref st);
+            SampleStruct st;    //  this may be initialized or not
+            PrintName(out st);
+            //  access to members is allowed, since the method must assign to out parameter
             Console.WriteLine($"Struct After call: {st.Name}");
         }
 
-        static void PrintName(SampleClass sample)
+        static void PrintName(out SampleStruct sample)
         {
-            Console.WriteLine(sample.Name);
-            sample.Name = "Will this affect s?";
-        }
+            //  before assignment, member access is not allowed
+            //  sample.Name = "Something";  //  Not allowed
 
-        //  ref keyword implements the reference symantics for value types
-        static void PrintName(ref SampleStruct sample)
-        {
-            Console.WriteLine(sample.Name);
-            sample.Name = "Will this affect st?";
+            //  must assign to out parameter before leaving
+            sample = new SampleStruct("Assigned within the method");
         }
     }
 }
